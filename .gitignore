@@ -95,6 +95,9 @@ work/
 docs/.jekyll-metadata
 docs/.jekyll-cache
 
+*.tar.gz
+*.tgz
+
 # For Hive
 TempStatsStore/
 metastore/

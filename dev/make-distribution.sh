@@ -36,7 +36,7 @@ MAKE_TGZ=false
 MAKE_PIP=false
 MAKE_R=false
 NAME=none
-MVN="$SPARK_HOME/build/mvn"
+MVN="/opt/homebrew/bin/mvn"
 
 function exit_with_usage {
   set +x
@@ -293,4 +293,11 @@ if [ "$MAKE_TGZ" == "true" ]; then
   fi
   $TAR -czf "spark-$VERSION-bin-$NAME.tgz" -C "$SPARK_HOME" "$TARDIR_NAME"
   rm -rf "$TARDIR"
+
+  rm -rf /Users/david/data/github/hive/docker/"spark-$VERSION-bin-$NAME.tgz"
+  cp "spark-$VERSION-bin-$NAME.tgz" /Users/david/data/github/hive/docker/"spark-$VERSION-bin-$NAME.tgz"
+  rm -rf /Users/david/data/bigdata/spark
+  tar -xvf "spark-$VERSION-bin-$NAME.tgz" -C /Users/david/data/bigdata
+  ln -s /Users/david/data/bigdata/spark-3.3.5-SNAPSHOT-bin-3.3.2 /Users/david/data/bigdata/spark
+  mv "spark-$VERSION-bin-$NAME.tgz" docker/
 fi
